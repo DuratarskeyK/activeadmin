@@ -38,10 +38,7 @@ module ActiveAdmin
               text_node(meta(name: name, content: content))
             end
 
-            active_admin_application.javascripts.each do |path|
-              javascript_tag = active_admin_namespace.use_webpacker ? javascript_pack_tag(path) : javascript_include_tag(path)
-              text_node(javascript_tag)
-            end
+            text_node(javascript_importmap_tags)
 
             if active_admin_namespace.favicon
               favicon = active_admin_namespace.favicon
